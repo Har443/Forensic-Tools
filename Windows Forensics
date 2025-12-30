@@ -1,0 +1,212 @@
+Module 1️⃣ – Evidence Handling & Acquisition
+
+Goal: Preserve evidence legally & safely
+
+Covers:
+
+Chain of custody
+
+Live vs dead system
+
+Disk imaging
+
+Memory capture
+
+Hashing (MD5/SHA256)
+
+Output:
+
+Forensically sound evidence
+
+Module 2️⃣ – Windows File System (NTFS)
+
+Goal: Understand how files really work
+
+Covers:
+
+MFT
+
+$LogFile
+
+$UsnJrnl
+
+Timestamps (MACB)
+
+Alternate Data Streams
+
+Module 3️⃣ – Windows Event Logs
+
+Goal: User & system activity
+
+Covers:
+
+Security.evtx
+
+System.evtx
+
+Application.evtx
+
+PowerShell logs
+
+RDP logs
+
+Key Event IDs:
+4624, 4625, 4688, 4697, 4720
+
+Module 4️⃣ – Windows Registry Forensics
+
+Goal: Persistence & configuration
+
+Covers:
+
+SAM, SYSTEM, SOFTWARE, NTUSER.DAT
+
+Startup keys
+
+Services
+
+Installed programs
+
+USB history
+
+Module 5️⃣ – Program Execution Artifacts
+
+Goal: Prove what executed
+
+Covers:
+
+Prefetch
+
+ShimCache (AppCompatCache)
+
+AmCache
+
+BAM/DAM
+
+RecentFiles
+
+Module 6️⃣ – User Activity Artifacts
+
+Goal: User behavior reconstruction
+
+Covers:
+
+LNK files
+
+Jump Lists
+
+Recent Documents
+
+Shellbags
+
+Typed paths
+
+Module 7️⃣ – Browser & Email Forensics
+
+Goal: Internet usage & phishing
+
+Covers:
+
+Chrome / Edge / Firefox
+
+History, downloads
+
+Cookies
+
+Cache
+
+Webmail artifacts
+
+Module 8️⃣ – Malware & Persistence Analysis
+
+Goal: Detect attacker foothold
+
+Covers:
+
+Registry persistence
+
+Services
+
+Scheduled Tasks
+
+Startup folders
+
+DLL hijacking
+
+WMI persistence
+
+Module 9️⃣ – Memory Forensics
+
+Goal: Find fileless malware
+
+Volatility
+
+Covers:
+
+Processes
+
+DLL injection
+
+Network connections
+
+Credentials
+
+Rootkits
+
+Module 🔟 – Network Forensics (Windows)
+
+Goal: Communications & movement
+
+Covers:
+
+DNS cache
+
+ARP cache
+
+Firewall logs
+
+RDP connections
+
+Proxy artifacts
+
+Module 1️⃣1️⃣ – Timeline Analysis
+
+Goal: Reconstruct attack
+
+Covers:
+
+Event log timeline
+
+File timestamps
+
+Registry timestamps
+
+Correlation across artifacts
+
+Module 1️⃣2️⃣ – Reporting & Incident Response
+
+Goal: Communicate findings
+
+Covers:
+
+IOC documentation
+
+Executive summary
+
+Technical report
+
+Remediation steps
+
+Legal readiness
+
+🧠 How Professionals Think About This
+
+Think of Windows forensics as:
+
+Acquire → Analyze → Correlate → Report
+
+Each module feeds the next.
+
+✅ Final Answer (Short)
+
+Windows forensics has 12 core modules, and mastering all 12 makes you a complete DFIR investigator.
