@@ -1,1 +1,2 @@
-
+Collection (left side)- You're telling KAPE to go into your C: drive, grab all the forensic artifacts, and copy them into a folder called C:\KAPE_OUTPUTARTIFACTS. The Flush checkbox means it will wipe that folder clean before starting so nothing old gets mixed in.
+Processing (right side)- Once collection is done, KAPE will take everything it just collected from C:\KAPE_OUTPUTARTIFACTS, run the parsing tools against it, and drop the results into C:\KAPEOUTPUTPARSED — that's where your readable CSV/JSON output will land.
