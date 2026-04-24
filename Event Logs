@@ -1,0 +1,79 @@
+What are event logs?
+Windows event logs record system, security, and application activity. In IR, they are your primary source for answering: who logged in, what ran, what changed, and did the
+
+# Windows Event ID — Quick Reference
+
+## Malware Execution
+| Event ID | Log | What it means | What to look for |
+|----------|-----|---------------|------------------|
+| 4688 | Security | Process created | NewProcessName path, ParentProcessName, CommandLine args |
+| 4689 | Security | Process exited | Pair with 4688 for runtime duration |
+| 7045 | System | New service installed | ServiceName, ImagePath, AccountName |
+| 4698 | Security | Scheduled task created | Task name, action path, trigger time |
+| 4702 | Security | Scheduled task modified | Check what changed and who changed it |
+| 7036 | System | Service started/stopped | Pair with 7045 |
+
+## Logon & Lateral Movement
+| Event ID | Log | What it means | What to look for |
+|----------|-----|---------------|------------------|
+| 4624 | Security | Successful logon | LogonType, IpAddress, unusual hours |
+| 4625 | Security | Failed logon | Bursts = brute force |
+| 4648 | Security | Logon with explicit credentials | Pass-the-hash indicator |
+| 4778 | Security | RDP session reconnected | ClientAddress |
+| 4779 | Security | RDP session disconnected | Pair with 4778 |
+| 1149 | TermServices | RDP authentication | Fires before full logon |
+| 4776 | Security | NTLM auth attempt | Pass-the-hash always uses NTLM |
+
+## Logon Types
+| Type | Meaning |
+|------|---------|
+| 2 | Interactive — keyboard at machine |
+| 3 | Network — SMB / file share |
+| 5 | Service logon |
+| 10 | RDP |
+| 11 | Cached credentials |
+
+## Account & Privilege Changes
+| Event ID | Log | What it means | What to look for |
+|----------|-----|---------------|------------------|
+| 4720 | Security | New user account created | Any unknown account = backdoor |
+| 4732 | Security | User added to Administrators | 4720 + 4732 together = backdoor admin |
+| 4672 | Security | Special privileges assigned | Unexpected accounts getting admin |
+| 4724 | Security | Password reset attempted | Attacker locking out defenders |
+| 4756 | Security | User added to security group | Which group? |
+
+## Defense Evasion
+| Event ID | Log | What it means | What to look for |
+|----------|-----|---------------|------------------|
+| 1102 | Security | Security log cleared — CRITICAL | Note timestamp, pivot to MFT/prefetch |
+| 104 | System | System log cleared — CRITICAL | Same as above |
+| 4719 | Security | Audit policy changed | Attacker disabling logging |
+| 7040 | System | Service start type changed | AV/Defender disabled? |
+
+## PowerShell
+| Event ID | Log | What it means | What to look for |
+|----------|-----|---------------|------------------|
+| 4104 | PowerShell | Script block — full script captured | IEX, DownloadString, -EncodedCommand, Invoke-Mimikatz |
+| 4103 | PowerShell | Pipeline execution | Each command in the pipeline |
+| 400 | PowerShell | Engine started | HostApplication — how was PS invoked? |
+
+## Sysmon (if installed)
+| Event ID | Log | What it means | What to look for |
+|----------|-----|---------------|------------------|
+| 1 | Sysmon | Process create | Hash, full CLI, parent hash — richer than 4688 |
+| 3 | Sysmon | Network connection | Which process, destination IP + port, C2 traffic |
+| 11 | Sysmon | File created | Dropper activity — what process created what file |
+| 13 | Sysmon | Registry value set | Run keys, persistence paths |
+| 22 | Sysmon | DNS query | C2 domains, DGA patterns |
+
+## Quick Cheatsheet
+| Scenario | Event IDs to filter |
+|----------|-------------------|
+| Malware ran | 4688, 7045, 4698 |
+| RDP access | 4624 Type 10, 1149 |
+| Brute force | 4625 bursts then 4624 |
+| Pass-the-hash | 4648 + Type 3 + 4776 |
+| Backdoor account | 4720 + 4732 |
+| Logs wiped | 1102, 104 |
+| PowerShell attack | 4104 |
+| Privilege escalation | 4672, 4732, 4756 |
