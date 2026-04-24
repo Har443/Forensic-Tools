@@ -1,0 +1,16 @@
+You're looking at the FileDeletion output — this is from the $Recycle.Bin parsed by KAPE. Here's what you're seeing:
+What these columns mean:
+
+Deleted On — exact timestamp the file was deleted
+Source Name — full path in the Recycle Bin ($Recycle.Bin\S-1-5-21-... — the long number is the user's SID)
+File Type — $I = index file (metadata), $R = actual deleted file content
+File (cut off) — original file path before deletion
+
+
+What the $I and $R files mean:
+When Windows deletes a file to Recycle Bin it creates two files:
+
+$I = stores the original path + deletion timestamp + file size
+$R = stores the actual file content
+
+You're seeing all $I files — so KAPE captured the metadata of every deleted file.
