@@ -1,0 +1,23 @@
+Pillar 1 — Integrity: The data you analyze must be provably identical to the data on the original device. This is achieved through cryptographic hashing.  
+Integrity means ensuring that digital evidence has not been altered during collection, transfer, or analysis. 
+Investigators must be able to prove that the analyzed data is exactly the same as the data originally stored on the device.
+Compare the Hashes
+Item	SHA-256 Hash
+Original Drive	A1B3F56C99...EFF00
+Forensic Image	A1B3F56C99...EFF00
+
+The hashes are identical.
+
+That proves:
+
+The forensic image is an exact copy.
+No data changed during acquisition.
+The evidence integrity is preserved.
+===========================================================================
+
+Pillar 2 — Custody: Every person who touched the evidence, every location it was stored, every action performed on it — must be documented without gaps. This is the chain of custody log.
+===============================================
+A write blocker is a forensic device or software tool that allows investigators to read data from a storage device without changing anything on it.
+
+Quick-reference: what goes in every evidence log entry
+FieldWhat to recordDate & timeUTC always — never local timeExhibit numberUnique ID tied to the caseDescriptionMake, model, serial, capacity, conditionCollectorFull name, badge/employee IDHash valuesMD5 and/or SHA-256, algorithm statedActions takenEvery tool, every command, every findingTransferFrom whom, to whom, reason, signaturesStorage locationExact location, access restrictions
