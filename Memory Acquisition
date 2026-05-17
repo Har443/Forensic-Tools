@@ -1,0 +1,27 @@
+I use o-winpmem_amd64_1.0-rc1_signed.exe acquire memory.raw and collect the memory raw file 
+
+
+
+Group 1 — Processes
+What was running on the machine
+CommandWhat it showswindows.pslistAll running processeswindows.pstreeProcesses in parent/child treewindows.cmdlineExact command used to launch each process
+
+Group 2 — Network
+What connections existed
+CommandWhat it showswindows.netscanAll network connections and which process owns them
+
+Group 3 — Malware hunting
+Looking for suspicious activity
+CommandWhat it showswindows.malfindInjected code hiding in processeswindows.dlllistDLLs loaded by each process
+
+Group 4 — System info
+Basic machine information
+CommandWhat it showswindows.infoOS version, capture time — already ran thiswindows.hashdumpUser account password hashes
+
+Group 5 — Files & Registry
+What was open in memory
+CommandWhat it showswindows.registry.hivelistRegistry hives loaded in memorywindows.dumpfilesExtract files from memory
+
+volatile 
+
+========================================================
